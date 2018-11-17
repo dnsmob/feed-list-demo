@@ -1,0 +1,2 @@
+github "realm/realm-cocoa" == 3.11.2
+github "AFNetworking/AFNetworking" == 3.2.1
