@@ -6,14 +6,14 @@
 //  Copyright © 2018 Denis Santos. All rights reserved.
 //
 
-#import "AppModel.h"
+#import "DataModel.h"
 
 
-@interface AppModel ()
+@interface DataModel ()
   @property (nonatomic) AFHTTPSessionManager *manager;
   @end
 
-@implementation AppModel
+@implementation DataModel
   @synthesize manager;
   
   -(instancetype) init {
@@ -32,10 +32,10 @@
       parameters:NULL
         progress:NULL
          success:^(NSURLSessionTask *task, id responseObject){
+           
            RLMRealm *realm = [RLMRealm defaultRealm];
            [realm transactionWithBlock:^{
-
-             [realm deleteAllObjects];
+             [realm deleteAllObjects]; // should/could update known entries, but for simplicity, let's just recreate the database
 
              for (id object in responseObject) {
                Post *post = [[Post alloc] init];
@@ -50,7 +50,7 @@
            }];
 
            [self setValue:[Post allObjects] forKey:@"posts"];
-           NSLog(@"saved all posts");
+
          }
          failure:^(NSURLSessionTask *operation, NSError *error){
            NSLog(@"error %@", error);
@@ -60,13 +60,34 @@
          }];
   }
   
-  
-  
-//  -(void)setPosts:(RLMResults *)posts{
-//    NSLog(@"called setter");
-//    [self willChangeValueForKey:@"posts"];
-//    _posts = posts;
-//    [self didChangeValueForKey:@"posts"];
-//  }
+  -(void) loadDetailsForPost:(Post *)post {
+    [manager.operationQueue cancelAllOperations]; // cancel loading, will start a new one
+
+    NSString *path = @"http://jsonplaceholder.typicode.com/users";
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%ld", path, (long)post.userId]];
+    [manager GET:url.absoluteString
+      parameters:NULL
+        progress:NULL
+         success:^(NSURLSessionTask *task, id responseObject) {
+           
+           RLMRealm *realm = [RLMRealm defaultRealm];
+           [realm transactionWithBlock:^{
+             User *user = [[User alloc] init];
+             user.userId = [[responseObject valueForKey:@"id"] integerValue];
+             user.name = [[responseObject valueForKey:@"name"] description];
+             
+             // append user to post object
+             post.user = user;
+           }];
+           
+//           [self setValue:[Post allObjects] forKey:@"posts"];
+         }
+         failure:^(NSURLSessionTask *operation, NSError *error){
+           NSLog(@"error %@", error);
+           
+           [self setValue:[Post allObjects] forKey:@"posts"];
+           [self didChangeValueForKey:@"posts"];
+         }];
+  }
   
   @end

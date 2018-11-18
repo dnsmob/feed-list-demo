@@ -7,18 +7,13 @@
 //
 
 #import "ViewController.h"
-#import <Realm/RLMRealm.h>
-#import <Realm/RLMResults.h>
-#import <Realm/RLMArray.h>
-#import <AFNetworking/AFNetworking.h>
-#import "UIRefreshControl+beginRefreshing.h"
+
 
 
 @interface ViewController ()
-  @property (strong, nonatomic) AppModel *model;
+  @property (strong, nonatomic) DataModel *model;
   @property (strong, nonatomic) UIRefreshControl *refreshControl;
-  
-  //@property (strong, nonatomic) Post *selectedDataObject;
+  @property (strong, nonatomic) Post *selectedPost;
   
   @end
 
@@ -26,7 +21,7 @@
   
 -(void) viewDidLoad {
   [super viewDidLoad];
-  self.model = [[AppModel alloc] init];
+  self.model = [[DataModel alloc] init];
   
   // basic setup
   [self createRefreshControl];
@@ -87,11 +82,16 @@
 }
   
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//  selectedDataObject = [self.tableDataArray objectAtIndex:indexPath.row];
+  self.selectedPost = [self.model.posts objectAtIndex:indexPath.row];
   
-  
+  [self.model loadDetailsForPost:self.selectedPost];
+  [self performSegueWithIdentifier:@"segueToDetails" sender:nil];
 }
  
-  
+  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DetailsViewControl *view = (DetailsViewControl *)segue.destinationViewController;
+    view.model = self.model;
+    view.post = self.selectedPost;
+  }
 
   @end

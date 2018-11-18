@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 #import "User.h"
-#import "AppModel.h"
+#import "DataModel.h"
+#import <Realm/RLMRealm.h>
+#import <Realm/RLMResults.h>
+#import <Realm/RLMArray.h>
+#import <AFNetworking/AFNetworking.h>
+#import "UIRefreshControl+beginRefreshing.h"
+#import "DetailsViewControl.h"
 
 @interface ViewController : UIViewController {
 }

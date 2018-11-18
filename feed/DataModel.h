@@ -11,11 +11,13 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "Post.h"
 #import <Realm/RLMRealm.h>
+#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AppModel : NSObject
+@interface DataModel : NSObject
   -(void) loadPosts;
+  -(void) loadDetailsForPost:(Post *) post;
 
   @property (nonatomic, strong) RLMResults *posts;
 

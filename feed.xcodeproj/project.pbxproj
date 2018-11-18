@@ -17,8 +17,9 @@
 		9259FFFB21A038CE005128C0 /* feedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9259FFFA21A038CE005128C0 /* feedUITests.m */; };
 		92D081A021A08722008B1201 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D0819F21A08722008B1201 /* User.m */; };
 		92D081A321A09938008B1201 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A121A09937008B1201 /* Post.m */; };
-		92D081AA21A0BC0F008B1201 /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A921A0BC0F008B1201 /* AppModel.m */; };
+		92D081AA21A0BC0F008B1201 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A921A0BC0F008B1201 /* DataModel.m */; };
 		92D081B021A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081AF21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m */; };
+		92D081B321A1CF4F008B1201 /* DetailsViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081B221A1CF4F008B1201 /* DetailsViewControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,10 +74,12 @@
 		92D0819F21A08722008B1201 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		92D081A121A09937008B1201 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		92D081A221A09937008B1201 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
-		92D081A821A0BC0F008B1201 /* AppModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
-		92D081A921A0BC0F008B1201 /* AppModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
+		92D081A821A0BC0F008B1201 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		92D081A921A0BC0F008B1201 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		92D081AE21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+beginRefreshing.h"; sourceTree = "<group>"; };
 		92D081AF21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+beginRefreshing.m"; sourceTree = "<group>"; };
+		92D081B121A1CF4F008B1201 /* DetailsViewControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewControl.h; sourceTree = "<group>"; };
+		92D081B221A1CF4F008B1201 /* DetailsViewControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +136,10 @@
 				9259FFD721A038C7005128C0 /* AppDelegate.m */,
 				9259FFD921A038C8005128C0 /* ViewController.h */,
 				9259FFDA21A038C8005128C0 /* ViewController.m */,
-				92D081A821A0BC0F008B1201 /* AppModel.h */,
-				92D081A921A0BC0F008B1201 /* AppModel.m */,
+				92D081B121A1CF4F008B1201 /* DetailsViewControl.h */,
+				92D081B221A1CF4F008B1201 /* DetailsViewControl.m */,
+				92D081A821A0BC0F008B1201 /* DataModel.h */,
+				92D081A921A0BC0F008B1201 /* DataModel.m */,
 				92D081AE21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.h */,
 				92D081AF21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m */,
 				92D081A421A09C1F008B1201 /* Posts */,
@@ -346,8 +351,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D081A321A09938008B1201 /* Post.m in Sources */,
+				92D081B321A1CF4F008B1201 /* DetailsViewControl.m in Sources */,
 				92D081B021A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m in Sources */,
-				92D081AA21A0BC0F008B1201 /* AppModel.m in Sources */,
+				92D081AA21A0BC0F008B1201 /* DataModel.m in Sources */,
 				9259FFDB21A038C8005128C0 /* ViewController.m in Sources */,
 				9259FFE621A038CD005128C0 /* main.m in Sources */,
 				9259FFD821A038C8005128C0 /* AppDelegate.m in Sources */,
