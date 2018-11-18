@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
+#import "User.h"
+#import "AppModel.h"
 
-@interface ViewController : UIViewController
-
-
+@interface ViewController : UIViewController {
+}
+  
+  @property (weak, nonatomic) IBOutlet UITableView *tableView;
+  
 @end
-
