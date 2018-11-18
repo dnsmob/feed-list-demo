@@ -60,7 +60,7 @@
   }
   
   -(void) loadDetailsForPost:(Post *)post {
-    if (post.user != NULL) return;
+    if (post.user != NULL && post.user.userId >= 0) return;
     
     [self.manager.operationQueue cancelAllOperations]; // cancel loading, will start a new one
     

@@ -15,7 +15,7 @@
 #import <Realm/RLMArray.h>
 #import <AFNetworking/AFNetworking.h>
 #import "UIRefreshControl+beginRefreshing.h"
-#import "DetailsViewControl.h"
+#import "DetailsViewController.h"
 
 @interface ViewController : UIViewController {
 }

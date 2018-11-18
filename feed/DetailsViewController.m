@@ -6,13 +6,13 @@
 //  Copyright © 2018 Denis Santos. All rights reserved.
 //
 
-#import "DetailsViewControl.h"
+#import "DetailsViewController.h"
 
-@interface DetailsViewControl ()
+@interface DetailsViewController ()
   
   @end
 
-@implementation DetailsViewControl
+@implementation DetailsViewController
   
   -(void) viewDidLoad {
     [super viewDidLoad];

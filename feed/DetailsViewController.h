@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailsViewControl : UIViewController
+@interface DetailsViewController : UIViewController
   
   @property (weak, nonatomic) IBOutlet UILabel *user;
   @property (weak, nonatomic) IBOutlet UITextView *details;

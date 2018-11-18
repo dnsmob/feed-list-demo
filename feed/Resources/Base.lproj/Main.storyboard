@@ -49,7 +49,7 @@
         <!--Details-->
         <scene sceneID="4hM-TN-4Ig">
             <objects>
-                <viewController title="Details" id="qhs-cO-2AP" customClass="DetailsViewControl" sceneMemberID="viewController">
+                <viewController title="Details" id="qhs-cO-2AP" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YM0-3W-ZLf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

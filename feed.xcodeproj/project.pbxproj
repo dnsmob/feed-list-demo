@@ -19,7 +19,7 @@
 		92D081A321A09938008B1201 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A121A09937008B1201 /* Post.m */; };
 		92D081AA21A0BC0F008B1201 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A921A0BC0F008B1201 /* DataModel.m */; };
 		92D081B021A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081AF21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m */; };
-		92D081B321A1CF4F008B1201 /* DetailsViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081B221A1CF4F008B1201 /* DetailsViewControl.m */; };
+		92D081B321A1CF4F008B1201 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081B221A1CF4F008B1201 /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +78,8 @@
 		92D081A921A0BC0F008B1201 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		92D081AE21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+beginRefreshing.h"; sourceTree = "<group>"; };
 		92D081AF21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+beginRefreshing.m"; sourceTree = "<group>"; };
-		92D081B121A1CF4F008B1201 /* DetailsViewControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewControl.h; sourceTree = "<group>"; };
-		92D081B221A1CF4F008B1201 /* DetailsViewControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewControl.m; sourceTree = "<group>"; };
+		92D081B121A1CF4F008B1201 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		92D081B221A1CF4F008B1201 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +136,8 @@
 				9259FFD721A038C7005128C0 /* AppDelegate.m */,
 				9259FFD921A038C8005128C0 /* ViewController.h */,
 				9259FFDA21A038C8005128C0 /* ViewController.m */,
-				92D081B121A1CF4F008B1201 /* DetailsViewControl.h */,
-				92D081B221A1CF4F008B1201 /* DetailsViewControl.m */,
+				92D081B121A1CF4F008B1201 /* DetailsViewController.h */,
+				92D081B221A1CF4F008B1201 /* DetailsViewController.m */,
 				92D081A821A0BC0F008B1201 /* DataModel.h */,
 				92D081A921A0BC0F008B1201 /* DataModel.m */,
 				92D081AE21A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.h */,
@@ -351,7 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D081A321A09938008B1201 /* Post.m in Sources */,
-				92D081B321A1CF4F008B1201 /* DetailsViewControl.m in Sources */,
+				92D081B321A1CF4F008B1201 /* DetailsViewController.m in Sources */,
 				92D081B021A1B4E0008B1201 /* UIRefreshControl+beginRefreshing.m in Sources */,
 				92D081AA21A0BC0F008B1201 /* DataModel.m in Sources */,
 				9259FFDB21A038C8005128C0 /* ViewController.m in Sources */,

@@ -91,7 +91,7 @@
  
   // MARK: segue details
   -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id) sender {
-    DetailsViewControl *view = (DetailsViewControl *)segue.destinationViewController;
+    DetailsViewController *view = (DetailsViewController *)segue.destinationViewController;
     view.model = self.model;
     view.post = self.selectedPost;
   }
