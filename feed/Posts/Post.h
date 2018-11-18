@@ -12,11 +12,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Post : RLMObject
+  
   @property NSInteger userId;
   @property NSInteger postId;
   @property NSString *title;
   @property NSString *body;
   @property User *user;
-@end
+  
+  @end
 
 NS_ASSUME_NONNULL_END

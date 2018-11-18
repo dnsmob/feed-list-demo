@@ -17,10 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DataModel : NSObject
   -(void) loadPosts;
-  -(void) loadDetailsForPost:(Post *) post;
-
+  -(void) loadDetailsForPost:(Post *)post;
+  
   @property (nonatomic, strong) RLMResults *posts;
-
-@end
+  
+  @end
 
 NS_ASSUME_NONNULL_END

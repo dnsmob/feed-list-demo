@@ -22,29 +22,31 @@
     [self addEvents];
     
     // setup ui elements
-    [self.details setText: self.post.body];
+    self.details.text = self.post.body;
     if (self.post.user != NULL) { // user details cached? 🤔
-      [self.user setText:self.post.user.name];
+      self.user.text = self.post.user.name;
     }
   }
   
   -(void) viewWillDisappear:(BOOL) animated {
-    [self.model removeObserver:self forKeyPath:@"posts"];
+    [self.post removeObserver:self forKeyPath:@"user"];
   }
   
   -(void) addEvents {
-    [self.model addObserver:self
-                 forKeyPath:@"posts"
-                    options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                    context:nil];
+    [self.post addObserver:self
+                forKeyPath:@"user"
+                   options:NSKeyValueObservingOptionNew
+                   context:nil];
   }
   
-  -(void) observeValueForKeyPath:(NSString *) keyPath
+  -(void) observeValueForKeyPath:(NSString *)keyPath
                         ofObject:(id) object
-                          change:(NSDictionary *) change
-                         context:(void *) context {
+                          change:(NSDictionary *)change
+                         context:(void *)context {
     // update user field
-    NSLog(@"change %@", change);
+    User *user = [change valueForKey:@"new"];
+    self.user.text = user.name;
+    self.user.textColor = user.userId < 0 ? [UIColor grayColor] : [UIColor blackColor];
   }
   
   @end
