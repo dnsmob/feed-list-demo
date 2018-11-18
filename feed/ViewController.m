@@ -7,18 +7,12 @@
 //
 
 #import "ViewController.h"
-#import <Realm/RLMRealm.h>
-#import <Realm/RLMResults.h>
-#import <Realm/RLMArray.h>
-#import <AFNetworking/AFNetworking.h>
-#import "UIRefreshControl+beginRefreshing.h"
 
 
 @interface ViewController ()
-  @property (strong, nonatomic) AppModel *model;
+  @property (strong, nonatomic) DataModel *model;
   @property (strong, nonatomic) UIRefreshControl *refreshControl;
-  
-  //@property (strong, nonatomic) Post *selectedDataObject;
+  @property (strong, nonatomic) Post *selectedPost;
   
   @end
 
@@ -26,7 +20,7 @@
   
 -(void) viewDidLoad {
   [super viewDidLoad];
-  self.model = [[AppModel alloc] init];
+  self.model = [[DataModel alloc] init];
   
   // basic setup
   [self createRefreshControl];
@@ -37,13 +31,13 @@
   [self.refreshControl beginRefreshingProgrammatically];
 }
   
--(void) observeValueForKeyPath:(NSString *) keyPath
+-(void) observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id) object
-                        change:(NSDictionary *) change
-                       context:(void *) context {
+                        change:(NSDictionary *)change
+                       context:(void *)context {
   // posts model changed
   [self.refreshControl endRefreshing];
-  [_tableView reloadData];
+  [self.tableView reloadData];
 }
   
 -(void) createRefreshControl {
@@ -58,7 +52,7 @@
   
   [self.model addObserver:self
                forKeyPath:@"posts"
-                  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                  options:NSKeyValueObservingOptionNew
                   context:nil];
 }
   
@@ -68,13 +62,13 @@
 }
   
   // MARK: TableView methods
-- (NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
+-(NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
   return [self.model.posts count];
 }
   
-- (UITableViewCell *) tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-  static NSString * cellid = @"cell";
-  UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+-(UITableViewCell *) tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
+  static NSString *cellid = @"cell";
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                   reuseIdentifier:cellid];
@@ -86,12 +80,20 @@
   return cell;
 }
   
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//  selectedDataObject = [self.tableDataArray objectAtIndex:indexPath.row];
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
+  self.selectedPost = [self.model.posts objectAtIndex:indexPath.row];
   
+  [self.model loadDetailsForPost:self.selectedPost];
+  [self performSegueWithIdentifier:@"segueToDetails" sender:nil];
 }
  
-  
+  // MARK: segue details
+  -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id) sender {
+    DetailsViewControl *view = (DetailsViewControl *)segue.destinationViewController;
+    view.model = self.model;
+    view.post = self.selectedPost;
+  }
 
   @end
