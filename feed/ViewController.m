@@ -20,6 +20,7 @@
   
 -(void) viewDidLoad {
   [super viewDidLoad];
+  self.title = @"Posts";
   self.model = [[DataModel alloc] init];
   
   // basic setup
@@ -87,7 +88,8 @@
   
   self.selectedPost = [self.model.posts objectAtIndex:indexPath.row];
   
-  [self.model loadDetailsForPost:self.selectedPost];
+  [self.model loadDetailsForPost:self.selectedPost withCompletion:^(bool finished) {
+  }];
   [self performSegueWithIdentifier:@"segueToDetails" sender:nil];
 }
  

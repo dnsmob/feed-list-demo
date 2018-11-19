@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DataModel : NSObject
 
-  -(void) loadPosts:(void(^)(bool)) completionHandler;
-  -(void) loadDetailsForPost:(Post *)post;
+  -(void) loadPosts:(void(^)(bool)) handler;
+  -(void) loadDetailsForPost:(Post *)post withCompletion:(void(^)(bool)) handler;
   
   @property (nonatomic, strong) RLMResults *posts;
   

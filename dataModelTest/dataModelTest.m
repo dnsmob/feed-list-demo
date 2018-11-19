@@ -50,8 +50,43 @@
     XCTAssertNil(post.user);
     
     NSString *expected = @"sunt aut facere repellat provident occaecati excepturi optio reprehenderit";
-    NSString *result = [[[self.model posts] objectAtIndex:0] objectForKey:@"title"];
+    NSString *result = post.title;
     XCTAssertEqualObjects(expected, result);
+  }];
+}
+
+-(void) testUserDetails {
+  [self.model loadPosts:^(bool finished) {
+    Post *post = [self.model.posts objectAtIndex:0];
+    // user is null at start
+    XCTAssertNil(post.user);
+    
+    [self.model loadDetailsForPost:post withCompletion:^(bool finished) {
+      // user has been created in the post
+      XCTAssertTrue([post.user isKindOfClass:[User class]]);
+      
+      // no properties are null
+      XCTAssertGreaterThanOrEqual(post.user.userId, 0);
+      XCTAssertNotNil(post.user.name);
+      
+      NSString *expected = @"Leanne Graham";
+      NSString *result = post.user.name;
+      XCTAssertEqualObjects(expected, result);
+    }];
+  }];
+}
+
+-(void) testPersistentData {
+  [self.model loadPosts:^(bool finished) {
+    // get all saved posts
+    XCTAssertGreaterThanOrEqual([[Post allObjects] count], 0);
+    
+    // cleared saved data
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm transactionWithBlock:^{
+      [realm deleteAllObjects];
+    }];
+    XCTAssertEqual([[Post allObjects] count], 0);
   }];
 }
 
