@@ -24,8 +24,8 @@
     }
     return self;
   }
-  
-  -(void) loadPosts {
+
+-(void) loadPosts:(nullable void(^)(bool)) handler {
     [self.manager.operationQueue cancelAllOperations]; // cancel loading, will start a new one
     
     NSURL *url = [NSURL URLWithString:@"http://jsonplaceholder.typicode.com/posts"];
@@ -50,16 +50,20 @@
            }];
 
            [self setValue:[Post allObjects] forKey:@"posts"];
+           
+           handler(true);
          }
          failure:^(NSURLSessionTask *operation, NSError *error){
            NSLog(@"error %@", error);
            
            // recycle previously stored data
            [self setValue:[Post allObjects] forKey:@"posts"];
+           
+           handler(true);
          }];
   }
   
-  -(void) loadDetailsForPost:(Post *)post {
+-(void) loadDetailsForPost:(Post *)post withCompletion:(void(^)(bool)) handler {
     if (post.user != NULL && post.user.userId >= 0) return;
     
     [self.manager.operationQueue cancelAllOperations]; // cancel loading, will start a new one
@@ -79,6 +83,8 @@
              // append User to post object
              [post setValue:user forKey:@"user"];
            }];
+           
+           handler(true);
          }
          failure:^(NSURLSessionTask *operation, NSError *error){
            NSLog(@"error %@", error);
@@ -90,6 +96,8 @@
              user.name = @"no internet 😵";
              [post setValue:user forKey:@"user"];
            }];
+           
+           handler(true);
          }];
   }
   

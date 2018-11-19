@@ -10,7 +10,7 @@
 
 
 @interface ViewController ()
-  @property (strong, nonatomic) DataModel *model;
+
   @property (strong, nonatomic) UIRefreshControl *refreshControl;
   @property (strong, nonatomic) Post *selectedPost;
   
@@ -20,6 +20,7 @@
   
 -(void) viewDidLoad {
   [super viewDidLoad];
+  self.title = @"Posts";
   self.model = [[DataModel alloc] init];
   
   // basic setup
@@ -27,7 +28,8 @@
   [self addEvents];
   
   // show loading state
-  [self.model loadPosts];
+  [self.model loadPosts:^(bool finished) {
+  }];
   [self.refreshControl beginRefreshingProgrammatically];
 }
   
@@ -58,10 +60,11 @@
   
 -(void) onRefreshChanged {
   // forcing a reload request
-  [self.model loadPosts];
+  [self.model loadPosts:^(bool finished) {
+  }];
 }
   
-  // MARK: TableView methods
+// MARK: TableView methods
 -(NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
   return [self.model.posts count];
 }
@@ -85,15 +88,16 @@
   
   self.selectedPost = [self.model.posts objectAtIndex:indexPath.row];
   
-  [self.model loadDetailsForPost:self.selectedPost];
+  [self.model loadDetailsForPost:self.selectedPost withCompletion:^(bool finished) {
+  }];
   [self performSegueWithIdentifier:@"segueToDetails" sender:nil];
 }
  
-  // MARK: segue details
-  -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id) sender {
-    DetailsViewController *view = (DetailsViewController *)segue.destinationViewController;
-    view.model = self.model;
-    view.post = self.selectedPost;
-  }
+// MARK: segue details
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id) sender {
+  DetailsViewController *view = (DetailsViewController *)segue.destinationViewController;
+  view.model = self.model;
+  view.post = self.selectedPost;
+}
 
   @end
