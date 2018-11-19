@@ -25,7 +25,7 @@
     return self;
   }
 
--(void) loadPosts:(nullable void(^)(bool)) handler {
+-(void) loadPosts:(void(^)(bool)) handler {
     [self.manager.operationQueue cancelAllOperations]; // cancel loading, will start a new one
     
     NSURL *url = [NSURL URLWithString:@"http://jsonplaceholder.typicode.com/posts"];
