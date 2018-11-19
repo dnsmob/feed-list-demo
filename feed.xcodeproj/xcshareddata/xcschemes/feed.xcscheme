@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9259FFEA21A038CE005128C0"
+               BlueprintIdentifier = "9288BA3921A33CE5008B641D"
                BuildableName = "feedTests.xctest"
                BlueprintName = "feedTests"
                ReferencedContainer = "container:feed.xcodeproj">
@@ -42,9 +42,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9259FFF521A038CE005128C0"
+               BlueprintIdentifier = "92CC3CD421A24FB4002715EC"
                BuildableName = "feedUITests.xctest"
                BlueprintName = "feedUITests"
+               ReferencedContainer = "container:feed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "92B7A66E21A33D6700DC3F01"
+               BuildableName = "dataModelTest.xctest"
+               BlueprintName = "dataModelTest"
                ReferencedContainer = "container:feed.xcodeproj">
             </BuildableReference>
          </TestableReference>

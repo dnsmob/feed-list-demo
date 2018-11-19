@@ -25,7 +25,7 @@
     return self;
   }
   
-  -(void) loadPosts {
+-(void) loadPosts:(void(^)(bool)) completionHandler {
     [self.manager.operationQueue cancelAllOperations]; // cancel loading, will start a new one
     
     NSURL *url = [NSURL URLWithString:@"http://jsonplaceholder.typicode.com/posts"];
@@ -50,16 +50,20 @@
            }];
 
            [self setValue:[Post allObjects] forKey:@"posts"];
+           
+           completionHandler(true);
          }
          failure:^(NSURLSessionTask *operation, NSError *error){
            NSLog(@"error %@", error);
            
            // recycle previously stored data
            [self setValue:[Post allObjects] forKey:@"posts"];
+           
+           completionHandler(true);
          }];
   }
   
-  -(void) loadDetailsForPost:(Post *)post {
+-(void) loadDetailsForPost:(Post *)post {
     if (post.user != NULL && post.user.userId >= 0) return;
     
     [self.manager.operationQueue cancelAllOperations]; // cancel loading, will start a new one
