@@ -16,7 +16,10 @@
 		92B7A67221A33D6700DC3F01 /* dataModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B7A67121A33D6700DC3F01 /* dataModelTest.m */; };
 		92B7A67A21A33DA400DC3F01 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CC3CCD21A24131002715EC /* AFNetworking.framework */; };
 		92B7A67B21A33DA400DC3F01 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CC3CCE21A24131002715EC /* Realm.framework */; };
-		92B7A67C21A33F0C00DC3F01 /* DataModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A821A0BC0F008B1201 /* DataModel.h */; };
+		92B7A67D21A3876300DC3F01 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CC3CCD21A24131002715EC /* AFNetworking.framework */; };
+		92B7A67E21A3876300DC3F01 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92CC3CCD21A24131002715EC /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92B7A67F21A3876300DC3F01 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CC3CCE21A24131002715EC /* Realm.framework */; };
+		92B7A68021A3876300DC3F01 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92CC3CCE21A24131002715EC /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92D081A021A08722008B1201 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D0819F21A08722008B1201 /* User.m */; };
 		92D081A321A09938008B1201 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A121A09937008B1201 /* Post.m */; };
 		92D081AA21A0BC0F008B1201 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D081A921A0BC0F008B1201 /* DataModel.m */; };
@@ -41,6 +44,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				92B7A68021A3876300DC3F01 /* Realm.framework in Embed Frameworks */,
+				92B7A67E21A3876300DC3F01 /* AFNetworking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92B7A67F21A3876300DC3F01 /* Realm.framework in Frameworks */,
+				92B7A67D21A3876300DC3F01 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +194,6 @@
 				9259FFD021A038C7005128C0 /* Frameworks */,
 				9259FFD121A038C7005128C0 /* Resources */,
 				92D0819621A0793C008B1201 /* Embed Frameworks */,
-				92D0819D21A083B8008B1201 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,28 +279,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		92D0819D21A083B8008B1201 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		9259FFCF21A038C7005128C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -315,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92B7A67C21A33F0C00DC3F01 /* DataModel.h in Sources */,
 				92B7A67221A33D6700DC3F01 /* dataModelTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
